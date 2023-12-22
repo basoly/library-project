@@ -36,13 +36,38 @@ for (let key of data) {
 }
 
 function generateTable(table, data) {
+    let i = 0;
 	for (let element of data) {
 		let row = table.insertRow();
 		for (key in element) {
 		let cell = row.insertCell();
 		let text = document.createTextNode(element[key]);
-		cell.appendChild(text);}}}
+		cell.appendChild(text);}
+        deleteCell = row.insertCell();
+        // let deleteBtn = document.createTextNode(`<button id=${i}>Delete</button>`)
+        let deleteBtn = document.createElement('button');
+        deleteBtn.setAttribute("id", i);
+        // deleteBtn.setAttribute("innerHTML", "Remove");
+        deleteBtn.innerHTML = 'Remove'
+        deleteBtn.setAttribute("class", "delete-btn");
+        deleteBtn.addEventListener('click', deleteRow);
+        deleteCell.appendChild(deleteBtn);
+        i++;
+    }}
 
+function deleteRow(e) {
+    index = e.target.getAttribute('id');
+    alert(index)
+    myLibrary.splice(index,1);
+    deleteTable();
+
+    let table = document.querySelector("table");
+    let data = Object.keys(myLibrary[0]);
+
+    generateTable(table, myLibrary);
+    generateTableHead(table, data);
+}
+// might need to return new array and set equal to myLibrary
 // add <table> to HTML BEFORE
 let table = document.querySelector("table");
 let data = Object.keys(myLibrary[0]);
@@ -56,18 +81,18 @@ function buttonPush(event) {
   event.preventDefault();
 }
 
-function saveData() {
-  let title = document.getElementById('title').value;
-  let author = document.querySelector('#author').value;
-  let pages = document.querySelector('#pages').value;
-  let read = document.querySelector('#read').value;
+// function saveData() {
+//   let title = document.getElementById('title').value;
+//   let author = document.querySelector('#author').value;
+//   let pages = document.querySelector('#pages').value;
+//   let read = document.querySelector('#read').value;
   
-  newBook = {title: title, author: author, pages: pages, read: read}
-  addBookToLibrary(newBook)}
+//   newBook = {title: title, author: author, pages: pages, read: read}
+//   addBookToLibrary(newBook)}
 
 submitButton = document.querySelector('#save-data')
 submitButton.addEventListener("click", buttonPush);
-submitButton.addEventListener("click", saveData)
+submitButton.addEventListener("click", saveData);
 
 function deleteTable() {
   let table = document.querySelector('table')

@@ -2,7 +2,7 @@ table, th, td{
     width: 100%;
     /*border: 1px solid;*/
     border-collapse: collapse;
-    text-align: center;
+    /* text-align: center; */
     padding: 15px;
     border-bottom: 1px solid #ddd;
     tr:hover {background-color: yellow;}
@@ -22,4 +22,14 @@ table, th, td{
   
   body>div {
     margin-bottom: 20px;
+  }
+
+  .delete-btn {
+    background-color: red;
+    width: 50px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    font-size: 10px;
   }
