@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Library Project</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <table></table>
+    <div>Add New Books</div>
+    <form action="/new-book" method="post">
+      <div>
+        <label for="title">Book Title:</label>
+        <input id=title type="text" name=book-title/>
+      </div>
+      
+      <div>
+        <label for="author">Author</label>
+        <input id=author type="text" name=author-name/>
+      </div>
+      
+      <div>
+        <label for="pages">Pages</label>
+        <input id=pages type="text" name=page-number/>
+      </div>
+      
+      <div>
+        <label for="read">Read</label>
+        <input id=read type="text" name=read/>
+      </div>
+      <p><button id='save-data'>Submit</button></p>
+
+    </form>
+  </body>
+  <script src='script.js'></script>
+</html>
