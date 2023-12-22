@@ -57,7 +57,6 @@ function generateTable(table, data) {
 
 function deleteRow(e) {
     index = e.target.getAttribute('id');
-    alert(index)
     myLibrary.splice(index,1);
     deleteTable();
 
@@ -81,14 +80,9 @@ function buttonPush(event) {
   event.preventDefault();
 }
 
-// function saveData() {
-//   let title = document.getElementById('title').value;
-//   let author = document.querySelector('#author').value;
-//   let pages = document.querySelector('#pages').value;
-//   let read = document.querySelector('#read').value;
-  
-//   newBook = {title: title, author: author, pages: pages, read: read}
-//   addBookToLibrary(newBook)}
+// add button to set element.read = not read -> read
+// something like 
+// myLibrary[readclickedBtn.id].read = 'read'
 
 submitButton = document.querySelector('#save-data')
 submitButton.addEventListener("click", buttonPush);
