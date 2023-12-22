@@ -17,8 +17,8 @@ function addBookToLibrary(Book) {
 myLibrary.push({title:Book.title, author:Book.author, pages:Book.pages, read:Book.read})
 }
 
-let deepWork = new Book('Deep Work', 'Cal Newport', '296', 'read');
-let saltFAH = new Book('Salt, Fat, Acid, Heat', 'Samin Nosrat', '469','read');
+let deepWork = new Book('Deep Work', 'Cal Newport', '296', 'unread');
+let saltFAH = new Book('Salt, Fat, Acid, Heat', 'Samin Nosrat', '469','unread');
 
 addBookToLibrary(deepWork);
 addBookToLibrary(saltFAH);
@@ -52,6 +52,14 @@ function generateTable(table, data) {
         deleteBtn.setAttribute("class", "delete-btn");
         deleteBtn.addEventListener('click', deleteRow);
         deleteCell.appendChild(deleteBtn);
+
+	readCell = row.insertCell();
+        let readBtn = document.createElement('button');
+        readBtn.setAttribute("id", i);
+        readBtn.setAttribute("class", "read-btn");
+        readBtn.innerHTML = 'Change Read status'
+        readBtn.addEventListener("click", changeRead);
+        readCell.appendChild(readBtn);
         i++;
     }}
 
@@ -91,6 +99,18 @@ submitButton.addEventListener("click", saveData);
 function deleteTable() {
   let table = document.querySelector('table')
   table.textContent = '';
+}
+
+function changeRead(e) {
+index = e.target.getAttribute('id');
+myLibrary[index].read = 'Read'
+deleteTable();
+
+let table = document.querySelector("table");
+let data = Object.keys(myLibrary[0]);
+
+generateTable(table, myLibrary);
+generateTableHead(table, data);
 }
 
 function saveData() {
